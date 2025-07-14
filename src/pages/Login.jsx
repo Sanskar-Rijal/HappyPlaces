@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 import React from "react";
 import { useState } from "react";
-import PageNav from "../components/PageNav";
+import PageNav from "../components/PageNav/PageNav";
 
 export default function Login() {
   const [email, setEmail] = React.useState("sans@gmail.com");
