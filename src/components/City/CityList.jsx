@@ -9,7 +9,7 @@ export default function CityList({ cities, isLoading }) {
   }
 
   if (!cities.length) {
-    return <Message />;
+    return <Message message={"no cities yet!"} />;
   }
 
   return (

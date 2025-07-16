@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import CityList from "./components/City/CityList";
 import React from "react";
 import { useEffect } from "react";
+import CountryList from "./components/Country/CountryList";
 
 const Base_Url = "http://localhost:8000/cities";
 
@@ -51,7 +52,12 @@ export default function App() {
             path="cities"
             element={<CityList cities={cities} isLoading={loading} />}
           />
-          <Route path="country" element={<p>Countries</p>} />
+
+          <Route
+            path="country"
+            element={<CountryList isLoading={loading} cities={cities} />}
+          />
+
           <Route path="form" element={<p>Form</p>} />
 
           {/* now we will be using indexed route, basically if none of the route matched then 
