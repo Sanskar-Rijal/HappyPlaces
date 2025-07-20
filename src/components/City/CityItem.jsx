@@ -10,11 +10,21 @@ const formatDate = (date) =>
 
 export default function CityItem({ cities }) {
   //destructuring the cities
-  const { cityName: name, country, emoji: flag, date, id: cityid } = cities;
+  const {
+    cityName: name,
+    country,
+    emoji: flag,
+    date,
+    id: cityid,
+    position,
+  } = cities;
 
   return (
     <li>
-      <Link className={styles.cityItem} to={`${cityid}`}>
+      <Link
+        className={styles.cityItem}
+        to={`${cityid}?lat=${position.lat}&lon=${position.lng}`}
+      >
         <span className={styles.emoji}> {flag}</span>
         <h3 className={styles.name}>{name}</h3>
         <time className={styles.data}>{formatDate(date)}</time>
