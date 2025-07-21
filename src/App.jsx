@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import Homepage from "./pages/Homepage";
@@ -11,6 +11,7 @@ import React from "react";
 import { useEffect } from "react";
 import CountryList from "./components/Country/CountryList";
 import City from "./components/City/City";
+import Form from "./components/Form/Form";
 
 const Base_Url = "http://localhost:8000/cities";
 
@@ -62,14 +63,11 @@ export default function App() {
             element={<CountryList isLoading={loading} cities={cities} />}
           />
 
-          <Route path="form" element={<p>Form</p>} />
+          <Route path="form" element={<Form />} />
 
           {/* now we will be using indexed route, basically if none of the route matched then 
-it will be rendered */}
-          <Route
-            index
-            element={<CityList cities={cities} isLoading={loading} />}
-          />
+it will be rendered , navigate to will navigate us to cities page*/}
+          <Route index element={<Navigate to="cities" replace />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
