@@ -1,5 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useEffect } from "react";
+import { useCities } from "../../contexts/CitiesContexts";
+import Spinner from "../Spinner/Spinner";
+import Button from "../Button/Button";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -13,56 +17,72 @@ function City() {
   //getting data from the url we use useParams hook
   const x = useParams();
   console.log(x); //outpuut of x is id that we passed in url so destructuring it
-  const { id } = x;
-  //a better way would have been {id}=useParams();
+  const { id } = useParams();
 
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const { getCityById, currentCity, isLoading } = useCities();
+
+  //usenavigate hook to go back
+  const navigate = useNavigate();
+
+  useEffect(
+    function () {
+      //fetching the current city from id that we've got before
+      getCityById(id);
+    },
+    [id]
+  );
 
   const { cityName, emoji, date, notes } = currentCity;
 
-  // return (
-  //   <div className={styles.city}>
-  //     <div className={styles.row}>
-  //       <h6>City name</h6>
-  //       <h3>
-  //         <span>{emoji}</span> {cityName}
-  //       </h3>
-  //     </div>
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-  //     <div className={styles.row}>
-  //       <h6>You went to {cityName} on</h6>
-  //       <p>{formatDate(date || null)}</p>
-  //     </div>
+  return (
+    <div className={styles.city}>
+      <div className={styles.row}>
+        <h6>City name</h6>
+        <h3>
+          <span>{emoji}</span> {cityName}
+        </h3>
+      </div>
 
-  //     {notes && (
-  //       <div className={styles.row}>
-  //         <h6>Your notes</h6>
-  //         <p>{notes}</p>
-  //       </div>
-  //     )}
+      <div className={styles.row}>
+        <h6>You went to {cityName} on</h6>
+        <p>{formatDate(date || null)}</p>
+      </div>
 
-  //     <div className={styles.row}>
-  //       <h6>Learn more</h6>
-  //       <a
-  //         href={`https://en.wikipedia.org/wiki/${cityName}`}
-  //         target="_blank"
-  //         rel="noreferrer"
-  //       >
-  //         Check out {cityName} on Wikipedia &rarr;
-  //       </a>
-  //     </div>
+      {notes && (
+        <div className={styles.row}>
+          <h6>Your notes</h6>
+          <p>{notes}</p>
+        </div>
+      )}
 
-  //     <div>
-  //       <ButtonBack />
-  //     </div>
-  //   </div>
-  // );
-  return <h1>City {id}</h1>;
+      <div className={styles.row}>
+        <h6>Learn more</h6>
+        <a
+          href={`https://en.wikipedia.org/wiki/${cityName}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Check out {cityName} on Wikipedia &rarr;
+        </a>
+      </div>
+
+      <div>
+        <Button
+          type="back"
+          onClick={(event) => {
+            event.preventDefault();
+            navigate(-1);
+          }}
+        >
+          &larr; back
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 export default City;

@@ -9,6 +9,9 @@ function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  //fetching city data from api based on the id which was passed on the URL
+  const [currentCity, setCurrentCity] = useState();
+
   useEffect(function () {
     async function fetchCities() {
       //console.log("fetching cities");
@@ -20,7 +23,7 @@ function CitiesProvider({ children }) {
         }
         const data = await response.json();
         setCities(data);
-        //console.log("data", data);
+        console.log("data", data);
         setLoading(false);
       } catch (error) {
         console.error("error", error);
@@ -31,11 +34,30 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
+  //now we create a function to fetch the current city based on the id
+  async function getCityById(id) {
+    try {
+      setLoading(true);
+      const response = await fetch(`${Base_Url}/${id}`);
+      if (!response.ok) {
+        throw new Error("Something went wrong, please try again later.....");
+      }
+      const data = await response.json();
+      setCurrentCity(data);
+    } catch (error) {
+      console.error("error", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <CitiesContext.Provider
       value={{
         cities,
         isLoading: loading,
+        currentCity,
+        getCityById,
       }}
     >
       {children}
