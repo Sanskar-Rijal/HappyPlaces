@@ -1,7 +1,14 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Map.module.css";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { useState } from "react";
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
+import { useEffect, useState } from "react";
 import { useCities } from "../../contexts/CitiesContexts";
 export default function Map() {
   //setSearchParams is used to update the query string in the URL
@@ -16,16 +23,19 @@ export default function Map() {
   //fetching the list of all the cities so we can show markers on the map
   const { cities } = useCities();
 
-  function updateMapPosition() {
-    setMapPosition([lat ? parseFloat(lat) : 40, lng ? parseFloat(lng) : 0]);
-  }
+  useEffect(
+    function () {
+      if (lat && lng) setMapPosition([lat, lng]);
+    },
+    [lat, lng]
+  );
 
   return (
     <div className={styles.mapContainer}>
       <MapContainer
         className={styles.map}
         center={mapPosition}
-        zoom={13}
+        zoom={10}
         scrollWheelZoom={true} //now we can use mouse to zoom in and out
       >
         <TileLayer
@@ -44,7 +54,34 @@ export default function Map() {
             </Popup>
           </Marker>
         ))}
+        <ChangeLocation position={mapPosition} />
+        <DetectClick />
       </MapContainer>
     </div>
   );
+}
+
+//creating custom component to change the location of the map based on the city clicked
+function ChangeLocation({ position }) {
+  const map = useMap();
+  map.setView(position);
+  return null; // This component doesn't render anything
+}
+
+//creating another custom component to open form whenever someone clicks on the map
+function DetectClick() {
+  //usenavigate hook
+  const navigate = useNavigate();
+
+  const map = useMapEvents({
+    click: (event) => {
+      console.log(event);
+      //console.log event gives this , so i can easily get lat and lng
+      // latlng :
+      // LatLng
+      // lat: 40.22921818870117
+      // lng : -0.12222290039062501
+      navigate(`form?lat=${event.latlng.lat}&lng=${event.latlng.lng}`);
+    },
+  });
 }
