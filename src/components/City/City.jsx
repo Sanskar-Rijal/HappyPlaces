@@ -32,11 +32,13 @@ function City() {
     [id]
   );
 
-  const { cityName, emoji, date, notes } = currentCity;
-
   if (isLoading) {
     return <Spinner />;
   }
+
+  //we will destructure the data only when the loading is done
+
+  const { cityName, emoji, date, notes } = currentCity;
 
   return (
     <div className={styles.city}>

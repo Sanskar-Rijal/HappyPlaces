@@ -10,7 +10,7 @@ function CitiesProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   //fetching city data from api based on the id which was passed on the URL
-  const [currentCity, setCurrentCity] = useState();
+  const [currentCity, setCurrentCity] = useState({});
 
   useEffect(function () {
     async function fetchCities() {
@@ -43,7 +43,9 @@ function CitiesProvider({ children }) {
         throw new Error("Something went wrong, please try again later.....");
       }
       const data = await response.json();
+      console.log("city data", data);
       setCurrentCity(data);
+      setLoading(false);
     } catch (error) {
       console.error("error", error);
     } finally {
