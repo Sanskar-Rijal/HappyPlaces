@@ -12,13 +12,16 @@ import { useEffect, useState } from "react";
 import { useCities } from "../../contexts/CitiesContexts";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import Button from "../Button/Button";
+import { useUrlPosition } from "../../hooks/useUrlPosition";
 
 export default function Map() {
   //setSearchParams is used to update the query string in the URL
-  const [searchparams, setSearchParams] = useSearchParams();
+  // const [searchparams, setSearchParams] = useSearchParams();
 
-  const lat = searchparams.get("lat");
-  const lng = searchparams.get("lon");
+  // const lat = searchparams.get("lat");
+  // const lng = searchparams.get("lon");
+
+  const [lat, lng] = useUrlPosition();
 
   //setting the position of the map using the lat and lng that we got from the URL
   const [mapPosition, setMapPosition] = useState([40, 0]);
@@ -101,7 +104,7 @@ function DetectClick() {
 
   const map = useMapEvents({
     click: (event) => {
-      console.log(event);
+      // console.log("from form ", event);
       //console.log event gives this , so i can easily get lat and lng
       // latlng :
       // LatLng

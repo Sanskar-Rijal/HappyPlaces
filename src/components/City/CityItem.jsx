@@ -29,7 +29,7 @@ export default function CityItem({ cities }) {
           currentCity &&
           (currentCity.id === cityid ? styles["cityItem--active"] : "")
         }`}
-        to={`${cityid}?lat=${position.lat}&lon=${position.lng}`}
+        to={`${cityid}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}> {flag}</span>
         <h3 className={styles.name}>{name}</h3>
