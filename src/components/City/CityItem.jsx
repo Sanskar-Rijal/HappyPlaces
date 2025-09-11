@@ -10,7 +10,8 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 export default function CityItem({ cities }) {
-  const { currentCity } = useCities();
+  //from contextapi to delete a city and find current city
+  const { currentCity, deleteCity } = useCities();
 
   //destructuring the cities
   const {
@@ -22,6 +23,11 @@ export default function CityItem({ cities }) {
     position,
   } = cities;
 
+  //function handler to delete the city
+  function handleClick(event) {
+    event.preventDefault();
+    deleteCity(cityid);
+  }
   return (
     <li>
       <Link
@@ -34,7 +40,10 @@ export default function CityItem({ cities }) {
         <span className={styles.emoji}> {flag}</span>
         <h3 className={styles.name}>{name}</h3>
         <time className={styles.data}>{formatDate(date)}</time>
-        <button className={styles.deleteBtn}> &times; </button>
+        <button className={styles.deleteBtn} onClick={handleClick}>
+          {" "}
+          &times;{" "}
+        </button>
       </Link>
     </li>
   );

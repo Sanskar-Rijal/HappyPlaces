@@ -1,64 +1,40 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Kathmandu",
+      "id": "fc76",
+      "cityName": "Biratnagar",
       "country": "Nepal",
       "emoji": "🇳🇵",
-      "date": "2027-03-20T10:15:30.245Z",
-      "notes": "Beautiful mountain views!",
+      "date": "2025-09-11T16:03:04.810Z",
+      "notes": "home town hehehe 😝",
       "position": {
-        "lat": 27.7172,
-        "lng": 85.324
-      },
-      "id": 45678901
+        "lat": "26.466885003671486",
+        "lng": "87.27539062500001"
+      }
     },
     {
-      "cityName": "Beijing",
-      "country": "China",
-      "emoji": "🇨🇳",
-      "date": "2027-05-18T14:30:45.123Z",
-      "notes": "Rich history and culture",
+      "id": "be19",
+      "cityName": "Dharan",
+      "country": "Nepal",
+      "emoji": "🇳🇵",
+      "date": "2025-09-11T16:03:32.473Z",
+      "notes": "college vako thau 😘",
       "position": {
-        "lat": 39.9042,
-        "lng": 116.4074
-      },
-      "id": 78901234
+        "lat": "26.800783511306584",
+        "lng": "87.29187011718751"
+      }
+    },
+    {
+      "id": "4a96",
+      "cityName": "Sydney",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2025-09-11T16:03:56.507Z",
+      "notes": "australia ko sabse popular thau\n",
+      "position": {
+        "lat": "-34.05265942137598",
+        "lng": "151.04003906250003"
+      }
     }
   ]
 }

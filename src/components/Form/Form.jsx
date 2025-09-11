@@ -45,7 +45,10 @@ function Form() {
   const [geocodingError, setGeocodingError] = useState("");
 
   //grabbinng function from context api
-  const { createCity } = useCities();
+  const { createCity, isLoading } = useCities();
+
+  //navigate to go to selected page
+  const navigation = useNavigate();
 
   //now converting the lat and lng that we fetched to city
   useEffect(
@@ -99,7 +102,7 @@ function Form() {
   }
 
   //function to handle submit event
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault(); //prevent page to reloding
     if (!cityName || !date) return;
     const newCity = {
@@ -108,13 +111,17 @@ function Form() {
       emoji,
       date,
       notes,
-      postion: { lat, lng },
+      position: { lat, lng },
     };
-    createCity(cityName);
+    await createCity(newCity); //since createCity is an async function
+    navigate("/app");
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
