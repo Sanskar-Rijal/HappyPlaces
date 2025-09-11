@@ -53,6 +53,28 @@ function CitiesProvider({ children }) {
     }
   }
 
+  //creating a new city when user click submit button on the form
+  async function createCity(newCity) {
+    try {
+      setLoading(true);
+
+      const response = await fetch(`${Base_Url}`, {
+        method: "POST",
+        body: JSON.stringify(newCity),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log("api", data);
+      setLoading(false);
+    } catch {
+      alert("there was an error loading data");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <CitiesContext.Provider
       value={{
@@ -60,6 +82,7 @@ function CitiesProvider({ children }) {
         isLoading: loading,
         currentCity,
         getCityById,
+        createCity,
       }}
     >
       {children}
