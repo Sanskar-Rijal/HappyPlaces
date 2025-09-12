@@ -13,27 +13,27 @@
       }
     },
     {
-      "id": "be19",
-      "cityName": "Dharan",
-      "country": "Nepal",
-      "emoji": "🇳🇵",
-      "date": "2025-09-11T16:03:32.473Z",
-      "notes": "college vako thau 😘",
+      "id": "cebf",
+      "cityName": "Chhatapur",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2025-09-12T13:41:29.502Z",
+      "notes": "jj",
       "position": {
-        "lat": "26.800783511306584",
-        "lng": "87.29187011718751"
+        "lat": "26.373415804339512",
+        "lng": "87.07077026367188"
       }
     },
     {
-      "id": "4a96",
-      "cityName": "Sydney",
-      "country": "Australia",
-      "emoji": "🇦🇺",
-      "date": "2025-09-11T16:03:56.507Z",
-      "notes": "australia ko sabse popular thau\n",
+      "id": "cb74",
+      "cityName": "Dharan",
+      "country": "Nepal",
+      "emoji": "🇳🇵",
+      "date": "2025-09-12T13:41:39.104Z",
+      "notes": "purwanchal campus",
       "position": {
-        "lat": "-34.05265942137598",
-        "lng": "151.04003906250003"
+        "lat": "26.838776064165888",
+        "lng": "87.29598999023439"
       }
     }
   ]
