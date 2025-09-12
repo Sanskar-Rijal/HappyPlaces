@@ -35,6 +35,30 @@
         "lat": "26.838776064165888",
         "lng": "87.29598999023439"
       }
+    },
+    {
+      "id": "8ee1",
+      "cityName": "Bay of Bengal",
+      "country": "Unkown Country",
+      "emoji": "",
+      "date": "2025-09-12T15:03:27.778Z",
+      "notes": "hehe",
+      "position": {
+        "lat": "6.031310707125822",
+        "lng": "91.97753906250001"
+      }
+    },
+    {
+      "id": "a264",
+      "cityName": "Karangjaya",
+      "country": "Indonesia",
+      "emoji": "🇮🇩",
+      "date": "2025-09-12T15:03:38.926Z",
+      "notes": "ss",
+      "position": {
+        "lat": "-2.964984369333955",
+        "lng": "102.81005859375"
+      }
     }
   ]
 }
