@@ -59,6 +59,18 @@
         "lat": "-2.964984369333955",
         "lng": "102.81005859375"
       }
+    },
+    {
+      "id": "de83",
+      "cityName": "Iṭahari̇̄",
+      "country": "Nepal",
+      "emoji": "🇳🇵",
+      "date": "2025-09-13T07:22:15.795Z",
+      "notes": "hehehhe kakarvita ko bus exchange garne thau",
+      "position": {
+        "lat": "26.648686120289714",
+        "lng": "87.27813720703126"
+      }
     }
   ]
 }
